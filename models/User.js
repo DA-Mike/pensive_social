@@ -1,6 +1,8 @@
 const { Schema, model } = require('mongoose');
-const { thoughtSchema } = require('./Thought');
+const { Thought } = require('./Thought');
 const { friendSchema } = require('./Friend');
+
+// TODO: Create a virtual called `friendCount` that retrieves the length of the user's `friends` array field on query.
 
 const userSchema = new Schema(
     {
@@ -15,16 +17,25 @@ const userSchema = new Schema(
             unique: true,
             required: true,
             // email validation needed
+            match: /.+\@.+\..+/,
         },
-        thoughts: [thoughtSchema],
+        thoughts: [Thought], // need to refactor
         friends: [friendSchema],
     },
     {
         toJSON: {
             getters: true,
+            virtuals: true,
         },
+        id: false,
     },
 );
+
+userSchema
+    .virtual('friendCount')
+    .get(function () {
+        return this.friends.length;
+    });
 
 const User = model('user', userSchema);
 
