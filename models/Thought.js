@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const { reactionSchema } = require('./Reaction');
+const Reactions = require('./Reaction');
 
 // TODO: Create a virtual called `reactionCount` that retrieves the length of the thought's `reactions` array field on query.
 
@@ -19,16 +19,11 @@ const thoughtSchema = new Schema(
                 if (date) return date.toISOString().split("T") [0];
             },
         },
-        userName: {
+        username: {
             type: String,
             required: true,
         }, // TODO: probably need to build association to User
-        reactions: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'reaction',
-            }
-        ],
+        reactions: [ Reactions ],
     },
     {
         toJSON: {
