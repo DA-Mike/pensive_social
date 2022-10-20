@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const { Thought } = require('./Thought');
 const { friendSchema } = require('./Friend');
 
@@ -19,8 +19,18 @@ const userSchema = new Schema(
             // email validation needed
             match: /.+\@.+\..+/,
         },
-        thoughts: [Thought], // need to refactor
-        friends: [friendSchema],
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Thought',
+            },
+        ], 
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User',
+            },
+        ],
     },
     {
         toJSON: {
