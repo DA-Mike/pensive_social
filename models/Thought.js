@@ -30,7 +30,7 @@ const thoughtSchema = new Schema(
         },
         id: false,
     },
-)
+);
 
 const formatDay = (day) => {
     if (day > 3 && day < 21) return day + 'th';
@@ -41,7 +41,6 @@ const formatDay = (day) => {
     default: return day + "th";
   };
 };
-
 
 thoughtSchema
     .virtual('reactionCount')
