@@ -8,7 +8,6 @@ module.exports = {
     getUsers: async (req, res, next) =>  {
         try {
             const users = await User.find();
-            // const usersObj = await thoughts
             res.json(users);
         } catch (err) {
             console.log('Error:', err);
@@ -67,6 +66,7 @@ module.exports = {
             res.json(err);
         }; 
     },
+    // /api/user/friends/:friendId
     addFriend: async (req, res, next) => {
         try {
             const newFriend = await User.findOneAndUpdate(

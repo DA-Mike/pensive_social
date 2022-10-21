@@ -5,15 +5,16 @@ const { getThoughts, getSingleThought, createThought, updateThought, deleteThoug
 router.route('/').get(getThoughts).all(createThought);
 
 // /api/thoughts/:thoughtId
-
 router
     .route('/:thoughtId')
     .get(getSingleThought)
     .put(updateThought)
     .delete(deleteThought);
 
+// /api/thoughts/:thoughtId/reactions
 router.route(`/:thoughtId/reactions`).post(addReaction);
 
+// /api/thoughts/:thoughtId/reactions/reactionId
 router.route(`/:thoughtId/reactions/reactionId`).delete(deleteReaction);
 
 module.exports = router;

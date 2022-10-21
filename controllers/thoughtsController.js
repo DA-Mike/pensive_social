@@ -74,6 +74,7 @@ module.exports = {
             res.json(err);
         }; 
     },
+    // /api/thoughts/:thoughtId/reactions
     addReaction: async (req, res, next) => {
         try {
             const newReaction = await Thought.findOneAndUpdate(
@@ -91,6 +92,7 @@ module.exports = {
             res.status(500).json(err);
         };
     },
+    // /api/thoughts/:thoughtId/reactions/reactionId
     deleteReaction: async (req, res, next) => {
         try {
             const user = await Thought.findOneAndUpdate(
