@@ -5,6 +5,8 @@
 
 This is a NoSQL project utilizing MongoDB. The project itself is a backend server for a social media app where users can posts thoughts, add friends, and post reactions to thoughts.
 
+The inpiration for this project was to learn more about how we can create backends with NoSQL; in this case MongoDB. This project utilizes Node, Express, MongoDB, and the Mongoose ODM. It was great learning about how MongoDB works and how we can integrate it into our projects.
+
 ## Table of Contents
 - [Installation](#Installation)
 - [Usage](#Usage)
@@ -19,7 +21,9 @@ None.
 
 ## Usage
 
-TBD
+[Link #1]()
+
+[Link #2]()
 
 ## Contributing
 ### How to Contribute:
