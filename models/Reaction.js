@@ -18,9 +18,8 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            //  TODO: * Use a getter method to format the timestamp on query
             get: (date) => {
-                if (date) return date.toISOString().split("T") [0];
+                if (date) return `${date.toLocaleDateString('en-us', {  month: 'short' })} ${formatDay(date.getDate())}, ${date.getFullYear()} at ${date.toLocaleTimeString('en-us',)}`
             },
         },
     },
@@ -31,5 +30,15 @@ const reactionSchema = new Schema(
         id: false,
     },
 );
+
+const formatDay = (day) => {
+    if (day > 3 && day < 21) return day + 'th';
+  switch (day % 10) {
+    case 1:  return day + "st";
+    case 2:  return day + "nd";
+    case 3:  return day + "rd";
+    default: return day + "th";
+  };
+};
 
 module.exports = reactionSchema;
