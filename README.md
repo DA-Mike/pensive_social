@@ -17,7 +17,7 @@ The inpiration for this project was to learn more about how we can create backen
 
 ## Installation
 
-None.
+Simply clone repo.
 
 ## Usage
 
@@ -28,11 +28,11 @@ None.
 ## Contributing
 ### How to Contribute:
 
-None.
+Fork and do you thing.
 
 ## Testing
 
-None.
+Test carefully.
 
 ## Questions
 
