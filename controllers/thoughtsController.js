@@ -35,7 +35,7 @@ module.exports = {
                 { new: true },
             );
             if (!addToUser) {
-                res.status(404).json({ message: 'Thought created, but found no user with that ID' });
+                res.status(404).json({ message: 'Thought created, but found no user with that user name' });
             } else {
                 res.json('Created the thought 🎉');
             };

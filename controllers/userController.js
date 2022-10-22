@@ -1,4 +1,3 @@
-const { ObjectId } = require('bson');
 const { User, Thought, Reaction } = require('../models');
 
 // /api/user route
@@ -53,12 +52,20 @@ module.exports = {
             res.status(500).json(err);
         };
     },
+    // ***BONUS*** mimics CASCADE ON DELETE and deletes user's associated thoughts when user is deleted
     deleteUser: async (req, res, next) => {
         try {
-            const user = await User.findOneAndDelete({ _id: req.params.userId });
+            const user = await User.findById( req.params.userId).clone(); 
+            const delThot = await Thought.deleteMany({
+                "_id": {
+                    $in: user.thoughts,
+                },
+            });
+            
             if (!user) {
                 res.status(404).json({ message: 'User not found'});
             } else {
+                await user.deleteOne();
                 res.json({ message: 'User deleted!'});
             };
         } catch (err) {

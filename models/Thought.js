@@ -1,8 +1,6 @@
 const { Schema, model } = require('mongoose');
 const Reactions = require('./Reaction');
 
-// **BONUS**: Remove a user's associated thoughts when deleted.
-
 const thoughtSchema = new Schema(
     {
         thoughtText: {
