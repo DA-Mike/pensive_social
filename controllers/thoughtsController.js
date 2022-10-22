@@ -16,7 +16,7 @@ module.exports = {
     getSingleThought: async (req, res, next) => {
         try {
             const thought = await Thought.findOne({ _id: req.params.thoughtId });
-            if (!user) {
+            if (!thought) {
                 res.status(404).json({ message: 'Thought not found'});
             } else {
                 res.json(thought);
@@ -92,14 +92,15 @@ module.exports = {
             res.status(500).json(err);
         };
     },
-    // /api/thoughts/:thoughtId/reactions/reactionId
+    // /api/thoughts/:thoughtId/reactions/:reactionId
     deleteReaction: async (req, res, next) => {
         try {
-            const user = await Thought.findOneAndUpdate(
+            const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId  },
-                { $pull: { reactions: req.params.reactionId } },
+                { $pull: { reactions: { reactionId: req.params.reactionId } } },
+                { runValidators: true, new: true }
                 );
-            if (!user) {
+            if (!thought) {
                 res.status(404).json({ message: 'User not found'});
             } else {
                 res.json({ message: 'Reaction deleted!'});
