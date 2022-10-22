@@ -21,9 +21,7 @@ Simply clone repo.
 
 ## Usage
 
-[Link #1]()
-
-[Link #2]()
+[![Video Overview](https://img.youtube.com/vi/lxlHNKiF4UY/0.jpg)](https://youtu.be/lxlHNKiF4UY)
 
 ## Contributing
 ### How to Contribute:
